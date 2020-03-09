@@ -1,9 +1,9 @@
 {
-    "name": "hcodebr/php-classes",
+    "name": "wesleyeduardo/php-classes",
     "minimum-stability": "dev",
     "type": "library",
     "description": "Classes PHP",
-    "homepage": "https://github.com/hcodebr/php-classes",
+    "homepage": "https://github.com/wesleyeduardocr7/ecommerceWithPHP7AndMySql/tree/master/vendor/wesleyeduardo/php-classes",
     "authors": [
         {
             "name": "Wesley Eduardo",
