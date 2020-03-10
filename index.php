@@ -1,6 +1,7 @@
 <?php 
 
 require_once("vendor/autoload.php");
+
 use \Slim\Slim;
 use Classes\Page;
 use Classes\PageAdmin;
@@ -22,6 +23,17 @@ $app->get('/admin', function() {
 	$pageAdmin = new PageAdmin();
 
 	$pageAdmin->setTpl("index"); 
+
+});
+
+$app->get('/admin/login', function() {
+    
+	$pageAdmin = new PageAdmin([
+		"header"=>false,
+		"footer"=>false
+	]);
+
+	$pageAdmin->setTpl("login"); 
 
 });
 
