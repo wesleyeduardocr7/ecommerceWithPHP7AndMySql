@@ -2,6 +2,8 @@
 
 namespace Classes;
 
+use Classes\Model\User;
+
 class Model{
 
     private $values = [];
@@ -34,6 +36,14 @@ class Model{
         }
 
     }
+
+    public function getValues(){
+
+        return $this->values;
+
+    }
+
+
 }
 
 ?>
