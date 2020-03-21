@@ -27,6 +27,13 @@ class User extends Model{
             
             $user = new User();
 
+            $user->setData($data);
+
+            var_dump($user);
+            
+            exit;
+                        
+
         }else{
             throw new Exception("Usuário Inexistente ou Senha Inválida");
         }
