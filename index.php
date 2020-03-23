@@ -159,6 +159,42 @@ $app->post("/admin/users/:iduser",function($iduser){
 
 });
 
+$app->get("/admin/forgot",function(){
+
+	$page = new PageAdmin([
+		"header"=>false,
+		"footer"=>false
+	]);
+
+	$page->setTpl("forgot");
+
+});
+
+//Problema ao Localizar Rota | Funcionalidade Suspensa no Momento - 106
+$app->post("/admin/forgot",function(){
+
+	$user = User::getForgot($_POST["email"]);
+
+	header("Location: /admin/forgot/sent");
+	
+	exit;
+});
+
+//Problema ao Localizar Rota | Funcionalidade Suspensa no Momento - 106
+$app->get("/admin/forgot",function(){
+
+	$page = new PageAdmin([
+		"header"=>false,
+		"footer"=>false
+	]);
+
+	$page->setTpl("forgot-sent");
+
+});
+
+
+
+
 $app->run();
 
  ?>
