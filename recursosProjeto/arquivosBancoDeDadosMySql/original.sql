@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `db_ecommerce` /*!40100 DEFAULT CHARACTER SET utf8 */;
+﻿CREATE DATABASE  IF NOT EXISTS `db_ecommerce` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `db_ecommerce`;
 
 DROP TABLE IF EXISTS `db_ecommerce`.`tb_persons`;
@@ -271,4 +271,31 @@ BEGIN
     SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) WHERE a.iduser = LAST_INSERT_ID();
     
 END ;;
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE `sp_categories_save` (
+pidcategory INT,
+pdescategory VARCHAR(64)
+)
+BEGIN
+	
+	IF pidcategory > 0 THEN
+		
+		UPDATE tb_categories
+        SET descategory = pdescategory
+        WHERE idcategory = pidcategory;
+        
+    ELSE
+		
+		INSERT INTO tb_categories (descategory) VALUES(pdescategory);
+        
+        SET pidcategory = LAST_INSERT_ID();
+        
+    END IF;
+    
+    SELECT * FROM tb_categories WHERE idcategory = pidcategory;
+    
+END$$
+
 DELIMITER ;
