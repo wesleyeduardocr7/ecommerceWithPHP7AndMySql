@@ -111,21 +111,23 @@ class Cart extends Model {
 
 	public function addProduct(Product $product)
 	{
-
 		$sql = new Sql();
+
+		//var_dump($product);
+
+		//echo $this->getidcart();
+
+		//echo ' '. $product->getidproduct();
+		//exit;
 
 		$sql->query("INSERT INTO tb_cartsproducts (idcart, idproduct) VALUES(:idcart, :idproduct)", [
 			':idcart'=>$this->getidcart(),
 			':idproduct'=>$product->getidproduct()
-		]);
-
-		$this->getCalculateTotal();
-
+		]);	
 	}
 
 	public function removeProduct(Product $product, $all = false)
 	{
-
 		$sql = new Sql();
 
 		if ($all) {
@@ -142,10 +144,7 @@ class Cart extends Model {
 				':idproduct'=>$product->getidproduct()
 			]);
 
-		}
-
-		$this->getCalculateTotal();
-
+		}	
 	}
 
 	public function getProducts()
