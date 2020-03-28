@@ -21,9 +21,11 @@
 
                         <form action="/checkout">
                             
+                            <?php if( $error != '' ){ ?>
                             <div class="alert alert-danger" role="alert">
-                            Error!
+                            <?php echo htmlspecialchars( $error, ENT_COMPAT, 'UTF-8', FALSE ); ?>
                             </div>
+                            <?php } ?>
 
                             <table cellspacing="0" class="shop_table cart">
                                 <thead>
@@ -94,17 +96,17 @@
                                         <tbody>
                                             <tr class="cart-subtotal">
                                                 <th>Subtotal</th>
-                                                <td><span class="amount">$700.00</span></td>
+                                                <td><span class="amount">R$<?php echo formatPrice($cart["vlsubtotal"]); ?></span></td>
                                             </tr>
 
                                             <tr class="shipping">
                                                 <th>Frete</th>
-                                                <td>$5.00 <small>prazo de 0 dia(s)</small></td>
+                                                <td>R$<?php echo formatPrice($cart["vlfreight"]); ?><?php if( $cart["nrdays"] > 0 ){ ?> <small>prazo de <?php echo htmlspecialchars( $cart["nrdays"], ENT_COMPAT, 'UTF-8', FALSE ); ?> dia(s)</small><?php } ?></td>
                                             </tr>
 
                                             <tr class="order-total">
                                                 <th>Total</th>
-                                                <td><strong><span class="amount">$705.00</span></strong> </td>
+                                                <td><strong><span class="amount">R$<?php echo formatPrice($cart["vltotal"]); ?></span></strong> </td>
                                             </tr>
                                         </tbody>
                                     </table>

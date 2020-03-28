@@ -113,17 +113,13 @@ class Cart extends Model {
 	{
 		$sql = new Sql();
 
-		//var_dump($product);
-
-		//echo $this->getidcart();
-
-		//echo ' '. $product->getidproduct();
-		//exit;
-
 		$sql->query("INSERT INTO tb_cartsproducts (idcart, idproduct) VALUES(:idcart, :idproduct)", [
 			':idcart'=>$this->getidcart(),
 			':idproduct'=>$product->getidproduct()
 		]);	
+
+		$this->getCalculateTotal();
+
 	}
 
 	public function removeProduct(Product $product, $all = false)
@@ -145,6 +141,8 @@ class Cart extends Model {
 			]);
 
 		}	
+
+		$this->getCalculateTotal();
 	}
 
 	public function getProducts()
@@ -205,7 +203,7 @@ class Cart extends Model {
 				'nCdEmpresa'=>'',
 				'sDsSenha'=>'',
 				'nCdServico'=>'40010',
-				'sCepOrigem'=>'09853120',
+				'sCepOrigem'=>'65051300',
 				'sCepDestino'=>$nrzipcode,
 				'nVlPeso'=>$totals['vlweight'],
 				'nCdFormato'=>'1',
