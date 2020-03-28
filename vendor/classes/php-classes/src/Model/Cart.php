@@ -4,7 +4,6 @@ namespace Classes\Model;
 
 use \Classes\DB\Sql;
 use \Classes\Model;
-use \Classes\Mailer;
 use \Classes\Model\User;
 
 class Cart extends Model {
@@ -20,7 +19,7 @@ class Cart extends Model {
 		if (isset($_SESSION[Cart::SESSION]) && (int)$_SESSION[Cart::SESSION]['idcart'] > 0) {
 
 			$cart->get((int)$_SESSION[Cart::SESSION]['idcart']);
-
+			
 		} else {
 
 			$cart->getFromSessionID();
@@ -86,9 +85,8 @@ class Cart extends Model {
 		]);
 
 		if (count($results) > 0) {
-
+			
 			$this->setData($results[0]);
-
 		}
 
 	}
